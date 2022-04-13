@@ -1,0 +1,39 @@
+Proje
+
+1- Bir listeyi düzleştiren (flatten) fonksiyon yazın. Elemanları birden çok katmanlı listelerden ([[3],2] gibi) oluşabileceği gibi, non-scalar verilerden de oluşabilir. Örnek olarak:
+
+input: [[1,'a',['cat'],2],[[[3]],'dog'],4,5]
+
+
+
+def duz(ornek):
+    for item in ornek:
+        if isinstance(item, list):
+            yield from duz(item)
+        else:
+            yield item
+
+
+ornek = [[1, 'a', ['cat'], 2], [[[3]], 'dog'], 4, 5]
+flatlist = [a for a in duz(ornek)]
+
+flatlist
+
+output: [1,'a','cat',2,3,'dog',4,5]
+
+
+2- Verilen listenin içindeki elemanları tersine döndüren bir fonksiyon yazın. Eğer listenin içindeki elemanlar da liste içeriyorsa onların elemanlarını da tersine döndürün. Örnek olarak:
+
+input: [[1, 2], [3, 4], [5, 6, 7]]
+
+
+
+liste = [[1, 2], [3, 4], [5, 6, 7]]
+
+for _ in liste:
+    _.reverse()
+liste.reverse()
+
+liste
+
+output: [[[7, 6, 5], [4, 3], [2, 1]]
